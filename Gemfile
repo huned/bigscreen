@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,8 +16,13 @@ gem 'jquery-rails'
 
 group :development, :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'sqlite3'
 end
 
 group :test do
   gem 'turn', :require => false # pretty-print test output
+end
+
+group :production do
+  gem 'pg'
 end
