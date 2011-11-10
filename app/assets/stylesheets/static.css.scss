@@ -2,16 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$grid-width: 1280px;
-$grid-height: 800px;
-$col-width: 160px;
-$row-height: 100px;
+$grid-width: 1440px;
+$grid-height: 900px;
+$col-width: $grid-width / 8;
+$row-height: $grid-height / 8;
 
-$color: #777;
+$color: #888;
 $border-color: #bbb;
 $shadow-color: $border-color;
 $font: "Helvetica Neue", Arial, sans-serif;
-$normal-font: 24px;
+$normal-font: 16px;
+$large-font: 24px;
 
 @mixin column($cols, $padding: 8px, $border-width: 1px) {
   width: $cols * $col-width - 2 * $padding - $border-width;
@@ -25,6 +26,10 @@ $normal-font: 24px;
   padding-top: $padding;
   padding-bottom: $padding;
   border-bottom: $border-width solid $border-color;
+}
+
+* {
+  margin: 0;
 }
 
 body {
@@ -98,4 +103,24 @@ body {
 
 .queue {
   display: none;
+}
+
+.grid .col {
+  h1 {
+    font-size: $large-font;
+  }
+  time {
+    font-weight: bold;
+  }
+
+  span.tweet {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 150%;
+    color: #f8f8f8;
+    background: #404040;
+    a {
+      color: #eee;
+    }
+  }
 }

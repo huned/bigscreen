@@ -49,16 +49,18 @@ $(function() {
 
       // populate content boxes
       data.forEach(function(tweet) {
-        var box = $(boxes[i]);
+        var box = $(boxes[i])
+          , tweet = $('<span class="tweet">').html(tweet.text);
+
         if (box.is(':empty')) {
-          $('<div class="current">').html(tweet.text).appendTo(box);
+          $('<div class="current">').append(tweet).appendTo(box);
         } else {
           var queue = box.find('.queue');
           if (queue.length < 1) {
             $('<div class="queue">').appendTo(box);
             queue = box.find('.queue');
           }
-          $('<div class="item">').html(tweet.text).appendTo(queue);
+          $('<div class="item">').append(tweet).appendTo(queue);
         }
 
         i++;
