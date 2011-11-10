@@ -9,21 +9,23 @@ $col-width: 160px;
 $row-height: 100px;
 
 $color: #777;
-$shadow-color: #bbb;
+$border-color: #bbb;
 $font: "Helvetica Neue", Arial, sans-serif;
 $normal-font: 24px;
 $large-font: 64px;
 
-@mixin column($cols, $padding: $col-padding, $border-width: 1) {
-  width: $cols * $col-width - 2 * $padding - 2 * $border-width;
+@mixin column($cols, $padding: $col-padding, $border-width: 1px) {
+  width: $cols * $col-width - 2 * $padding - $border-width;
   padding-left: $padding;
   padding-right: $padding;
+  border-right: $border-width solid $border-color;
 }
 
-@mixin row($rows, $padding: $col-padding, $border-width: 1) {
-  height: $rows * $row-height - 2 * $padding - 2 * $border-width;
+@mixin row($rows, $padding: $col-padding, $border-width: 1px) {
+  height: $rows * $row-height - 2 * $padding - $border-width;
   padding-top: $padding;
   padding-bottom: $padding;
+  border-bottom: $border-width solid $border-color;
 }
 
 body {
@@ -47,50 +49,50 @@ body {
 .col {
   float: left;
   background: white;
-  box-shadow: inset 0 0 4px $shadow-color;
+  box-shadow: inset 0 0 4px $border-color;
 
   @include column(1);
   @include row(1);
   &.no-padding {
-    @include column(1, 0);
+    @include column(1, 0, 0);
   }
 
   &.two-col {
     @include column(2);
     &.no-padding {
-      @include column(2, 0);
+      @include column(2, 0, 0);
     }
   }
 
   &.four-col {
     @include column(4);
     &.no-padding {
-      @include column(4, 0);
+      @include column(4, 0, 0);
     }
   }
   &.six-col {
     @include column(6);
     &.no-padding {
-      @include column(6, 0);
+      @include column(6, 0, 0);
     }
   }
 
   &.two-row {
     @include row(2);
     &.no-padding {
-      @include row(2, 0);
+      @include row(2, 0, 0);
     }
   }
   &.three-row {
     @include row(3);
     &.no-padding {
-      @include row(3, 0);
+      @include row(3, 0, 0);
     }
   }
   &.four-row {
     @include row(4);
     &.no-padding {
-      @include row(4, 0);
+      @include row(4, 0, 0);
     }
   }
 }
