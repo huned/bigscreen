@@ -6,4 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//
+// vendor/assets/javascripts
+// -------------------------
+//= require animatable
+//
 //= require_tree .
