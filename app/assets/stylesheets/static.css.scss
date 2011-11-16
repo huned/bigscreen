@@ -131,7 +131,15 @@ body {
 }
 
 img.avatar {
+  width: 48px;
+  height: 48px;
   border-radius: 4px;
+
+  &.small {
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+  }
 }
 
 .col {

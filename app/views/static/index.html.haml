@@ -1,6 +1,6 @@
 .col.six-col.title
-.col.two-col.clock
-  %time
+.col.two-col
+  %time.clock
 .col.four-col.three-row
 .col.four-col.three-row
 .col.two-col.four-row.no-padding
@@ -19,3 +19,5 @@
 %script#content-template{:type => 'text/x-handlebars-template'}
   .content
     %span.tweet {{text}}
+    %img.avatar.small{:src => '{{user.profile_image_url}}'}
+    %time {{timestamp created_at}}

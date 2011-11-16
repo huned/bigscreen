@@ -1,3 +1,6 @@
+Handlebars.registerHelper 'timestamp', (t) ->
+  moment(t).format 'MM/DD hh:mm'
+
 $(document).ready ->
   titleTemplate = Handlebars.compile $('#title-template').html()
   contentTemplate = Handlebars.compile $('#content-template').html()
@@ -18,6 +21,7 @@ $(document).ready ->
 
     success: (tweets, status) ->
       return unless tweets?
+      console.log tweets
       user = tweets[0].user
 
       # title
