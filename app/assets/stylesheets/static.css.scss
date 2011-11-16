@@ -48,10 +48,12 @@ body {
   width: $grid-width;
   height: $grid-height;
   background: white;
+  position: relative;
 }
 
 .grid .col {
   float: left;
+  position: relative;
   background: white;
   box-shadow: inset 0 0 4px $shadow-color;
 
@@ -114,6 +116,18 @@ body {
   }
 }
 
+.grid .col {
+  .full-screen {
+    position: absolute;
+    width: $grid-width;
+    height: $grid-height;
+    z-index: 1;
+    background: white;
+    top: 0;
+    left: 0;
+  }
+}
+
 .title {
   img.avatar {
     float: left;
@@ -148,6 +162,69 @@ img.avatar {
 
     &:first-child {
       display: block;
+    }
+  }
+}
+
+.full-screen {
+  .content {
+    display: none;
+
+    &:first-child {
+      display: block;
+    }
+  }
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: $grid-width;
+  height: $grid-height;
+
+  background: black;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+.weather {
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li.day {
+      display: inline-block;
+      padding-top: 124px;
+      width: 14%;
+      text-align: center;
+
+      &.sunny {
+        background: transparent image-url('weather/sunny.png') top center no-repeat;
+      }
+
+      &.sunny-cloudy {
+        background: transparent image-url('weather/sunny-cloudy.png') top center no-repeat;
+      }
+
+      &.sunny-rainy {
+        background: transparent image-url('weather/sunny-rainy.png') top center no-repeat;
+      }
+
+      label {
+        font-variant: small-caps;
+        font-size: 36px;
+      }
+
+      .high {
+        font-size: 72px;
+      }
+
+      .low {
+        font-size: 36px;
+      }
     }
   }
 }

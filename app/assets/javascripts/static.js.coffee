@@ -4,13 +4,22 @@ Handlebars.registerHelper 'timestamp', (t) ->
 $(document).ready ->
   titleTemplate = Handlebars.compile $('#title-template').html()
   contentTemplate = Handlebars.compile $('#content-template').html()
+  videoTemplate = Handlebars.compile $('#video-template').html()
+  weatherTemplate = Handlebars.compile $('#weather-template').html()
+
+  # weather
+  $('.full-screen').append weatherTemplate()
+
+  # video
+  #$('.full-screen').append videoTemplate()
 
   randomTimeout = ->
-    Math.round Math.random() * 10000 # milliseconds
+    Math.round 5000 + Math.random() * 10000 # milliseconds
 
   cycleBox = (box) ->
     () ->
       box.find('.content:first-child').remove().appendTo box
+      col = box.closest '.col'
       setTimeout cycleBox(box), randomTimeout()
 
   $.ajax '/ladygaga.json',

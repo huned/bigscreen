@@ -1,3 +1,5 @@
+.full-screen.hidden
+
 .col.six-col.title
 .col.two-col
   %time.clock
@@ -21,3 +23,40 @@
     %span.tweet {{text}}
     %img.avatar.small{:src => '{{user.profile_image_url}}'}
     %time {{timestamp created_at}}
+
+%script#video-template{:type => 'text/x-handlebars-template'}
+  :erb
+    <iframe class="youtube-player" type="text/html" width="360" height="225" src="http://www.youtube.com/embed/X9YMU0WeBwU?xautoplay=1" frameborder="0">
+    </iframe>
+
+%script#weather-template{:type => 'text/x-handlebars-template'}
+  .content.weather
+    %ul
+      %li.day.sunny
+        %label Sun
+        .high 79˚
+        .low 59˚
+      %li.day.sunny-cloudy
+        %label Mon
+        .high 79˚
+        .low 59˚
+      %li.day.sunny
+        %label Tue
+        .high 79˚
+        .low 59˚
+      %li.day.sunny
+        %label Wed
+        .high 79˚
+        .low 59˚
+      %li.day.sunny-rainy
+        %label Thu
+        .high 79˚
+        .low 59˚
+      %li.day.sunny
+        %label Fri
+        .high 79˚
+        .low 59˚
+      %li.day.sunny
+        %label Sat
+        .high 79˚
+        .low 59˚
