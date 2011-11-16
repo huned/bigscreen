@@ -157,11 +157,15 @@ img.avatar {
 }
 
 .col {
+  .content-box {
+    float: left;
+  }
+
   .content {
     display: none;
 
     &:first-child {
-      display: block;
+      display: inline-block;
     }
   }
 }
@@ -226,5 +230,28 @@ img.avatar {
         font-size: 36px;
       }
     }
+  }
+}
+
+img.thumbnail {
+  border: 1px solid $border-color;
+  padding: 1px;
+
+  &.left {
+    float: left;
+    margin-right: 12px;
+  }
+
+  &.right {
+    float: right;
+    margin-left: 12px;
+  }
+
+  &.horizontal {
+    width: 340px;
+  }
+
+  &.vertical {
+    height: 318px;
   }
 }

@@ -30,18 +30,19 @@ $(document).ready ->
 
     success: (tweets, status) ->
       return unless tweets?
-      console.log tweets
+      #console.log tweets
       user = tweets[0].user
 
       # title
       $('.title').append titleTemplate(user)
 
       # initialize boxes
-      boxes = $ '.col:empty'
+      boxes = $ '.content-box'
 
       # iterate over tweets, filling boxes
       _.each tweets, (tweet, i) ->
         box = boxes.filter ":eq(#{i % boxes.length})"
+
         box.append contentTemplate(tweet)
 
       # start cycling boxes
