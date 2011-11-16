@@ -10,6 +10,14 @@ $(document).ready ->
 
   # weather
   $('.full-screen').append weatherTemplate()
+  setInterval () ->
+    $('.col').toggleClass 'stop-animation'
+    $('.full-screen').toggleClass('active')
+    setTimeout () ->
+      $('.col').toggleClass 'stop-animation'
+      $('.full-screen').toggleClass('active')
+    , 3000
+  , 10000
 
   # video
   #$('.full-screen').append videoTemplate()
@@ -70,4 +78,4 @@ $(document).ready ->
       _.each boxes, (box) ->
         setInterval (() ->
           $(box).not('.stop-animation').toggleClass 'flip'
-        ), 1000 + Math.random() * 10000
+        ), 2500 + Math.random() * 10000

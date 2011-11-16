@@ -149,23 +149,22 @@ img.avatar {
 }
 
 .full-screen {
-  .content {
-    display: none;
-
-    &:first-child {
-      display: block;
-    }
-  }
-
   position: absolute;
-  z-index: 999;
   top: 0;
   left: 0;
   width: $grid-width;
-  height: $grid-height;
+  height: 0;
+  z-index: 0;
 
   background: black;
   color: white;
+
+  -webkit-transition: all 0.4s ease-in-out;
+
+  &.active {
+    height: $grid-height;
+    z-index: 999;
+  }
 }
 
 .hidden {
@@ -193,6 +192,12 @@ img.avatar {
 
       &.sunny-rainy {
         background: transparent image-url('weather/sunny-rainy.png') top center no-repeat;
+      }
+
+      &.today {
+        background-color: white;
+        color: $color;
+        border-radius: 16px;
       }
 
       label {
