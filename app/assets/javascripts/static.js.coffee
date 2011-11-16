@@ -19,9 +19,11 @@ $(document).ready ->
 
   cycleBox = (box) ->
     () ->
-      box.find('.content:first-child').remove().appendTo box
-      col = box.closest '.col'
-      setTimeout cycleBox(box), randomTimeout()
+      box.addClass 'flip'
+      setTimeout () ->
+        box.removeClass 'flip'
+        setTimeout cycleBox(box), randomTimeout()
+      , randomTimeout()
 
   $.ajax '/ladygaga.json',
     dataType: 'json'
@@ -43,7 +45,11 @@ $(document).ready ->
       # iterate over tweets, filling boxes
       _.each tweets, (tweet, i) ->
         box = boxes.filter ":eq(#{i % boxes.length})"
-        content = $ contentTemplate(tweet)
+
+        frontOrBack = 'back'
+        frontOrBack = 'front' if box.is ':empty'
+
+        content = $(contentTemplate(tweet)).addClass frontOrBack
 
         if box.is '.with-thumbnail'
           image =
@@ -53,13 +59,22 @@ $(document).ready ->
 
           if box.is('.with-horizontal-thumbnail')
             image.orientation = 'horizontal'
-            image.image_url = '/assets/ladygaga/horizontal-1.jpg'
+            image.image_url =
+              if frontOrBack == 'front'
+                '/assets/ladygaga/horizontal-1.jpg'
+              else
+                '/assets/ladygaga/horizontal-2.jpg'
           else if box.is('.with-vertical-thumbnail')
             image.orientation = 'vertical'
-            image.image_url = '/assets/ladygaga/vertical-1.jpg'
+            image.image_url =
+              if frontOrBack == 'front'
+                '/assets/ladygaga/vertical-1.jpg'
+              else
+                '/assets/ladygaga/vertical-2.jpg'
 
           content.prepend thumbnailTemplate(image)
 
+        box.find('.back').remove() # for now, only allow one back panel
         box.append content
 
       # start cycling boxes

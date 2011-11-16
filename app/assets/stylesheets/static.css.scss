@@ -160,16 +160,6 @@ img.avatar {
   }
 }
 
-.col {
-  .content {
-    display: none;
-
-    &:first-child {
-      display: inline-block;
-    }
-  }
-}
-
 .full-screen {
   .content {
     display: none;
@@ -236,7 +226,7 @@ img.avatar {
 .col {
   &.with-vertical-thumbnail {
     .tweet {
-      width: 475px;
+      width: 420px;
     }
   }
 }
@@ -266,5 +256,49 @@ img.thumbnail {
   &.square {
     height: 150px;
     width: 150px;
+  }
+}
+
+.col {
+  position: relative;
+
+  .content {
+    width: inherit;
+    height: inherit;
+    padding: inherit;
+    float: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    background: white;
+
+    -webkit-perspective: 600;
+    -webkit-transform: rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition: all 0.4s ease-in-out;
+
+    &.front {
+      z-index: 2;
+      -webkit-transform: rotateY(0deg);
+    }
+
+    &.back {
+      z-index: 1;
+      -webkit-transform: rotateY(-180deg);
+    }
+  }
+
+  &.flip {
+    .front {
+      -webkit-transform: rotateY(180deg);
+    }
+    .back {
+      z-index: 3;
+      -webkit-transform: rotateY(0deg);
+    }
   }
 }
