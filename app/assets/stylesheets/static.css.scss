@@ -120,18 +120,6 @@ body {
   }
 }
 
-.grid .col {
-  .full-screen {
-    position: absolute;
-    width: $grid-width;
-    height: $grid-height;
-    z-index: 1;
-    background: white;
-    top: 0;
-    left: 0;
-  }
-}
-
 .title {
   img.avatar {
     float: left;
@@ -170,7 +158,7 @@ img.avatar {
   }
 
   position: absolute;
-  z-index: 1;
+  z-index: 999;
   top: 0;
   left: 0;
   width: $grid-width;

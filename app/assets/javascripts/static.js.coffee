@@ -14,17 +14,6 @@ $(document).ready ->
   # video
   #$('.full-screen').append videoTemplate()
 
-  randomTimeout = ->
-    Math.round 2500 + Math.random() * 10000 # milliseconds
-
-  cycleBox = (box) ->
-    () ->
-      box.addClass 'flip'
-      setTimeout () ->
-        box.removeClass 'flip'
-        setTimeout cycleBox(box), randomTimeout()
-      , randomTimeout()
-
   $.ajax '/ladygaga.json',
     dataType: 'json'
 
@@ -79,4 +68,6 @@ $(document).ready ->
 
       # start cycling boxes
       _.each boxes, (box) ->
-        setTimeout cycleBox($(box)), randomTimeout()
+        setInterval (() ->
+          $(box).not('.stop-animation').toggleClass 'flip'
+        ), 1000 + Math.random() * 10000
