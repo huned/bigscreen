@@ -5,6 +5,7 @@ $(document).ready ->
   titleTemplate = Handlebars.compile $('#title-template').html()
   contentTemplate = Handlebars.compile $('#content-template').html()
   videoTemplate = Handlebars.compile $('#video-template').html()
+  thumbnailTemplate = Handlebars.compile $('#thumbnail-template').html()
   weatherTemplate = Handlebars.compile $('#weather-template').html()
 
   # weather
@@ -14,7 +15,7 @@ $(document).ready ->
   #$('.full-screen').append videoTemplate()
 
   randomTimeout = ->
-    Math.round 5000 + Math.random() * 10000 # milliseconds
+    Math.round 2500 + Math.random() * 10000 # milliseconds
 
   cycleBox = (box) ->
     () ->
@@ -37,13 +38,29 @@ $(document).ready ->
       $('.title').append titleTemplate(user)
 
       # initialize boxes
-      boxes = $ '.content-box'
+      boxes = $ '.col:empty'
 
       # iterate over tweets, filling boxes
       _.each tweets, (tweet, i) ->
         box = boxes.filter ":eq(#{i % boxes.length})"
+        content = $ contentTemplate(tweet)
 
-        box.append contentTemplate(tweet)
+        if box.is '.with-thumbnail'
+          image =
+            image_url: '/assets/ladygaga/square-1.jpg'
+            orientation: 'square'
+            float: 'left'
+
+          if box.is('.with-horizontal-thumbnail')
+            image.orientation = 'horizontal'
+            image.image_url = '/assets/ladygaga/horizontal-1.jpg'
+          else if box.is('.with-vertical-thumbnail')
+            image.orientation = 'vertical'
+            image.image_url = '/assets/ladygaga/vertical-1.jpg'
+
+          content.prepend thumbnailTemplate(image)
+
+        box.append content
 
       # start cycling boxes
       _.each boxes, (box) ->

@@ -104,14 +104,18 @@ body {
 }
 
 .grid .col {
-  span.tweet {
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 150%;
-    color: #f8f8f8;
-    background: #404040;
-    a {
-      color: #eee;
+  .tweet {
+    float: left;
+
+    span {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 150%;
+      color: #f8f8f8;
+      background: #404040;
+      a {
+        color: #eee;
+      }
     }
   }
 }
@@ -157,10 +161,6 @@ img.avatar {
 }
 
 .col {
-  .content-box {
-    float: left;
-  }
-
   .content {
     display: none;
 
@@ -233,6 +233,14 @@ img.avatar {
   }
 }
 
+.col {
+  &.with-vertical-thumbnail {
+    .tweet {
+      width: 475px;
+    }
+  }
+}
+
 img.thumbnail {
   border: 1px solid $border-color;
   padding: 1px;
@@ -253,5 +261,10 @@ img.thumbnail {
 
   &.vertical {
     height: 318px;
+  }
+
+  &.square {
+    height: 150px;
+    width: 150px;
   }
 }

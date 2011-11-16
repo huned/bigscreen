@@ -3,24 +3,14 @@
 .col.six-col.title
 .col.two-col
   %time.clock
+.col.four-col.three-row.with-thumbnail.with-vertical-thumbnail
 .col.four-col.three-row
-  %img.thumbnail.vertical.left{:src => asset_path('ladygaga/vertical-1.jpg')}
-  .content-box{:style => 'width: 475px'}
-.col.four-col.three-row
-  .content-box
 .col.two-col.four-row.no-padding
   .col.two-col.two-row
-    .content-box
   .col.two-col.two-row
-    .content-box
+.col.two-col.four-row.with-thumbnail.with-horizontal-thumbnail
 .col.two-col.four-row
-  %img.thumbnail.horizontal{:src => asset_path('ladygaga/horizontal-1.jpg')}
-  .content-box
-.col.two-col.four-row
-  .content-box
-.col.two-col.four-row
-  %img.thumbnail.horizontal{:src => asset_path('ladygaga/horizontal-2.jpg')}
-  .content-box
+.col.two-col.four-row.with-thumbnail.with-horizontal-thumbnail
 
 / templates
 %script#title-template{:type => 'text/x-handlebars-template'}
@@ -30,12 +20,13 @@
 
 %script#content-template{:type => 'text/x-handlebars-template'}
   .content
-    %span.tweet {{text}}
-    %img.avatar.small{:src => '{{user.profile_image_url}}'}
-    %time {{timestamp created_at}}
+    .tweet
+      %span {{text}}
+      %img.avatar.small{:src => '{{user.profile_image_url}}'}
+      %time {{timestamp created_at}}
 
-%script#content-thumbnail-template{:type => 'text/x-handlebars-template'}
-  %img.thumbnail{:src => '{{ladygagaThumbnail orientation}}'}
+%script#thumbnail-template{:type => 'text/x-handlebars-template'}
+  %img.thumbnail{:src => '{{image_url}}', :class => '{{float}} {{orientation}}'}
 
 %script#video-template{:type => 'text/x-handlebars-template'}
   :erb
