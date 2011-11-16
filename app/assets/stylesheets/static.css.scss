@@ -279,6 +279,11 @@ img.thumbnail {
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     -webkit-transition: all 0.4s ease-in-out;
+
+    &.back {
+      color: white;
+      background: #f531b2;
+    }
   }
 
   &.flip-y {
