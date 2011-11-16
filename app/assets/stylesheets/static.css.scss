@@ -259,7 +259,7 @@ img.thumbnail {
   }
 }
 
-.col {
+.col.flippable {
   position: relative;
 
   .content {
@@ -276,29 +276,54 @@ img.thumbnail {
     background: white;
 
     -webkit-perspective: 600;
-    -webkit-transform: rotateY(0deg);
     -webkit-transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     -webkit-transition: all 0.4s ease-in-out;
+  }
 
-    &.front {
+  &.flip-y {
+    .content.front {
       z-index: 2;
       -webkit-transform: rotateY(0deg);
     }
 
-    &.back {
+    .content.back {
       z-index: 1;
       -webkit-transform: rotateY(-180deg);
     }
   }
 
-  &.flip {
-    .front {
+  &.flip-y.flip {
+    .content.front {
+      z-index: 1;
       -webkit-transform: rotateY(180deg);
     }
-    .back {
-      z-index: 3;
+    .content.back {
+      z-index: 2;
       -webkit-transform: rotateY(0deg);
+    }
+  }
+
+  &.flip-x {
+    .content.front {
+      z-index: 2;
+      -webkit-transform: rotateX(0deg);
+    }
+
+    .content.back {
+      z-index: 1;
+      -webkit-transform: rotateX(-180deg);
+    }
+  }
+
+  &.flip-x.flip {
+    .content.front {
+      z-index: 1;
+      -webkit-transform: rotateX(180deg);
+    }
+    .content.back {
+      z-index: 2;
+      -webkit-transform: rotateX(0deg);
     }
   }
 }
