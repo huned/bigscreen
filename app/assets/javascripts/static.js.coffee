@@ -15,6 +15,7 @@ $(document).ready ->
     [@a, @b] = [@b, @a]
     @a()
 
+  # full screen
   fullScreenTimeout = (t) ->
     if t == weatherTemplate
       10000
@@ -29,6 +30,14 @@ $(document).ready ->
       $('.full-screen').removeClass('active').empty()
     , fullScreenTimeout(@a)
   , 120000
+
+  # random highlights
+  setInterval () ->
+    n = $('.tweet span').length
+    e1 = $('.tweet span').eq Math.round(Math.random() * n)
+    $('.tweet span').not(e1).removeClass 'highlight'
+    e1.addClass 'highlight'
+  , 5000
 
   $.ajax '/ladygaga.json',
     dataType: 'json'
