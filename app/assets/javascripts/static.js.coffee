@@ -9,18 +9,26 @@ $(document).ready ->
   weatherTemplate = Handlebars.compile $('#weather-template').html()
 
   # weather
-  $('.full-screen').append weatherTemplate()
-  setInterval () ->
-    $('.col').toggleClass 'stop-animation'
-    $('.full-screen').toggleClass('active')
-    setTimeout () ->
-      $('.col').toggleClass 'stop-animation'
-      $('.full-screen').toggleClass('active')
-    , 3000
-  , 10000
+  fullScreenContent = () ->
+    @b ||= weatherTemplate
+    @a ||= videoTemplate
+    [@a, @b] = [@b, @a]
+    @a()
 
-  # video
-  #$('.full-screen').append videoTemplate()
+  fullScreenTimeout = (t) ->
+    if t == weatherTemplate
+      10000
+    else
+      40000
+
+  setInterval () ->
+    $('.col').addClass 'pause'
+    $('.full-screen').html(fullScreenContent()).addClass 'active'
+    setTimeout () ->
+      $('.col').removeClass 'pause'
+      $('.full-screen').removeClass('active').empty()
+    , fullScreenTimeout(@a)
+  , 120000
 
   $.ajax '/ladygaga.json',
     dataType: 'json'
@@ -77,5 +85,5 @@ $(document).ready ->
       # start cycling boxes
       _.each boxes, (box) ->
         setInterval (() ->
-          $(box).not('.stop-animation').toggleClass 'flip'
+          $(box).not('.pause').toggleClass 'flip'
         ), 2500 + Math.random() * 10000

@@ -163,7 +163,7 @@ img.avatar {
 
   &.active {
     height: $grid-height;
-    z-index: 999;
+    z-index: 900;
   }
 }
 
@@ -324,4 +324,8 @@ img.thumbnail {
       -webkit-transform: rotateX(0deg);
     }
   }
+}
+
+.video {
+  text-align: center;
 }

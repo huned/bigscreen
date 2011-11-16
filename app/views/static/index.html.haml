@@ -29,9 +29,9 @@
   %img.thumbnail{:src => '{{image_url}}', :class => '{{float}} {{orientation}}'}
 
 %script#video-template{:type => 'text/x-handlebars-template'}
-  :erb
-    <iframe class="youtube-player" type="text/html" width="360" height="225" src="http://www.youtube.com/embed/X9YMU0WeBwU?xautoplay=1" frameborder="0">
-    </iframe>
+  .content.video
+    :erb
+      <iframe src="http://player.vimeo.com/video/26932477?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1" width="1440" height="810" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
 
 %script#weather-template{:type => 'text/x-handlebars-template'}
   .content.weather
