@@ -16,3 +16,12 @@
 //= require moment.min
 //
 //= require_tree .
+
+// via http://stackoverflow.com/questions/698301/is-there-a-native-jquery-function-to-switch-elements
+jQuery.fn.swapWith = function(to) {
+    return this.each(function() {
+        var copy_to = $(to).clone(true);
+        $(to).replaceWith(this);
+        $(this).replaceWith(copy_to);
+    });
+};

@@ -18,18 +18,31 @@ $(document).ready ->
   # full screen
   fullScreenTimeout = (t) ->
     if t == weatherTemplate
-      10000 # 10k
+      20000 # 2000 # 20000
     else
-      45000 # 40k
+      45000 # 2000 # 45000
 
   setInterval () ->
     $('.col').addClass 'pause'
     $('.full-screen').html(fullScreenContent()).addClass 'active'
     setTimeout () ->
+      # swap?
+      a = $('.col.swap-a').eq(0)
+      b = $('.col.swap-a').eq(1)
+      b.clone().insertBefore(a);
+      a.remove().insertBefore(b);
+      b.remove();
+
+      a = $('.col.swap-b').eq(0)
+      b = $('.col.swap-b').eq(1)
+      b.clone().insertBefore(a);
+      a.remove().insertBefore(b);
+      b.remove();
+
       $('.col').removeClass 'pause'
       $('.full-screen').removeClass('active').empty()
     , fullScreenTimeout(@a)
-  , 120000 # 120k
+  , 120000 # 5000 # 120000
 
   # random highlights
   setInterval () ->
