@@ -1,29 +1,29 @@
 .full-screen
 
 .col.six-col.title
-.col.two-col
+.col.two-col.clock-container
   %time.clock
-.col.four-col.three-row.with-thumbnail.with-vertical-thumbnail.flippable.flip-y
-.col.four-col.three-row.flippable.flip-x
+.col.four-col.three-row.with-thumbnail.with-vertical-thumbnail.flippable.flip-y.big-font
+.col.four-col.three-row.flippable.flip-x.huge-font
 .col.two-col.four-row.no-padding
   .col.two-col.two-row.flippable.flip-x
   .col.two-col.two-row.flippable.flip-y
 .col.two-col.four-row.with-thumbnail.with-horizontal-thumbnail.flippable.flip-y
-.col.two-col.four-row.flippable.flip-y
+.col.two-col.four-row.flippable.flip-y.big-font
 .col.two-col.four-row.with-thumbnail.with-horizontal-thumbnail.flippable.flip-y
 
 / templates
 %script#title-template{:type => 'text/x-handlebars-template'}
   %h1
-    {{name}}'s Tweets
+    {{name}}
     %img.avatar{:src => '{{profile_image_url}}'}
 
 %script#content-template{:type => 'text/x-handlebars-template'}
   .content
     .tweet
       %span {{text}}
-      %img.avatar.small{:src => '{{user.profile_image_url}}'}
-      %time {{timestamp created_at}}
+      .meta
+        %time {{timestamp created_at}}
 
 %script#thumbnail-template{:type => 'text/x-handlebars-template'}
   %img.thumbnail{:src => '{{image_url}}', :class => '{{float}} {{orientation}}'}

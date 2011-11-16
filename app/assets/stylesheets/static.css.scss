@@ -11,6 +11,7 @@ $color: #484848;
 $border-color: #bbb;
 $shadow-color: $border-color;
 $font: "Helvetica Neue", Arial, sans-serif;
+$tiny-font: 11px;
 $normal-font: 16px;
 $large-font: 24px;
 
@@ -104,46 +105,77 @@ body {
 }
 
 .grid .col {
+  &.big-font {
+    .tweet span {
+      font-size: 32px;
+    }
+  }
+
+  &.huge-font {
+    .tweet span {
+      font-size: 42px;
+    }
+  }
+
   .tweet {
     float: left;
 
     span {
+      font-family: 'Arvo', serif;
       font-size: 20px;
-      font-weight: bold;
       line-height: 150%;
-      color: #f8f8f8;
-      background: #404040;
-      a {
-        color: #eee;
-      }
+      color: white;
+      background: #484848;
     }
+
+    .meta {
+      font-family: 'Verdana', 'Helvetica Neue', 'Arial', sans-serif;
+      font-size: $tiny-font;
+      color: lighten($color, 25%);
+    }
+  }
+
+  .back .meta time {
+    color: darken($color, 10%);
   }
 }
 
 .title {
+  font-family: 'Calligraffitti', cursive;
+
   img.avatar {
     float: left;
   }
   h1 {
-    font-weight: normal;
     font-size: 64px;
   }
 }
 
-.clock {
-  text-align: center;
-  font-weight: normal;
-  font-size: 64px;
+.clock-container {
+  position: relative;
+
+  .clock {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+
+    font-family: 'Nunito', sans-serif;
+    font-weight: normal;
+    font-size: 48px;
+    color: lighten($color, 50%);
+  }
 }
 
 img.avatar {
-  width: 48px;
-  height: 48px;
+  width: 75px;
+  height: 75px;
+  margin: 12px;
   border-radius: 4px;
 
   &.small {
     width: 24px;
     height: 24px;
+    margin: 4px;
     border-radius: 3px;
   }
 }

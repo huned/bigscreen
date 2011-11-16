@@ -1,5 +1,5 @@
 Handlebars.registerHelper 'timestamp', (t) ->
-  moment(t).format 'MM/DD hh:mm'
+  moment(t).format 'MM/DD h:mm'
 
 $(document).ready ->
   titleTemplate = Handlebars.compile $('#title-template').html()
@@ -86,4 +86,4 @@ $(document).ready ->
       _.each boxes, (box) ->
         setInterval (() ->
           $(box).not('.pause').toggleClass 'flip'
-        ), 2500 + Math.random() * 10000
+        ), 10000 + Math.random() * 10000
