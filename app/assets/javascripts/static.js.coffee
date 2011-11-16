@@ -18,9 +18,9 @@ $(document).ready ->
   # full screen
   fullScreenTimeout = (t) ->
     if t == weatherTemplate
-      10000
+      10000 # 10k
     else
-      40000
+      45000 # 40k
 
   setInterval () ->
     $('.col').addClass 'pause'
@@ -29,7 +29,7 @@ $(document).ready ->
       $('.col').removeClass 'pause'
       $('.full-screen').removeClass('active').empty()
     , fullScreenTimeout(@a)
-  , 120000
+  , 120000 # 120k
 
   # random highlights
   setInterval () ->
